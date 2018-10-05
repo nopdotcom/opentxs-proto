@@ -5,7 +5,14 @@
 
 #!/usr/bin/env python
 
+import glob
+import os
+
 from setuptools import setup
+
+for f in glob.glob('opentxsproto/*_pb2.py'):
+    newf = f.replace("_pb2", "")
+    os.rename(f, newf)
 
 setup(name='opentxsproto',
       version='0.1',
