@@ -4,15 +4,17 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-"""Generate something closer to an idiomatic Python package.
+"""This post-processing creates something closer to an idiomatic
+Python package.
 
-Intended outcome:
+Usage:
 
 import opentxsproto as pb
 
 mf = pb.MoveFunds()
 
-Misfeature: MoveFunds_pb2 and MoveFunds__pb2 are still available.
+MoveFunds_pb2 (and the internal-only MoveFunds__pb2) are still available.
+
 """
 
 import glob
@@ -63,7 +65,7 @@ with open("opentxsproto/__init__.py", "w") as f:
         f.write(f"from {PREFIX}.{module}_pb2 import *\n")
 
 setup(name='opentxsproto',
-      version='0.1',
+      version='0.2',
       description='Open-Transactions Canonical Protbuf Definition Library',
       author='Justus Ranvier',
       author_email='justus@opentransactions.org',
